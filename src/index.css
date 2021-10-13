@@ -1,0 +1,23 @@
+.countdownContainer {
+  display: inline-block;
+}
+
+.problemArea {
+  display: inline-block;
+  margin-left:  50px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.textPrompt {
+  font-size: 24px;
+}
+
+.inputButtonRow {
+}
+
+.inputButtonRow>button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 24px;
+}
