@@ -15,8 +15,8 @@ type ProblemViewState = {
  */
 export class ProblemView extends React.Component<ProblemViewArgs, ProblemViewState> {
     /**
-   * Intializes the component from the given args
-   */
+     * Intializes the component from the given args
+     */
     constructor(props: ProblemViewArgs) {
         super(props);
         this.state = {
@@ -25,8 +25,8 @@ export class ProblemView extends React.Component<ProblemViewArgs, ProblemViewSta
     }
 
     /**
-   * Renders the component
-   */
+     * Renders the component
+     */
     render() {
         return <div className="problemArea">
             <div className="textPrompt">{this.state.problemState.currentProblem.prompt}</div>

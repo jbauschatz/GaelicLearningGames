@@ -5,7 +5,12 @@ import {ProblemView} from './problem-view';
 import {generateWordMatchProblem} from '../model/problem-service';
 import {Countdown} from './countdown';
 
+type BoatGameProps = {
+    gameOver: () => void
+}
+
 type BoatGameViewState = {
+    remainingProblems: number,
     problemState: ProblemState,
     rightAnswers: number,
     wrongAnswers: number
@@ -14,7 +19,7 @@ type BoatGameViewState = {
 /**
  * Component to render the entire Boat Game interface
  */
-export class BoatGameView extends React.Component<{}, BoatGameViewState> {
+export class BoatGameView extends React.Component<BoatGameProps, BoatGameViewState> {
     /**
      * Child component which renders the current problem
      */
@@ -23,12 +28,13 @@ export class BoatGameView extends React.Component<{}, BoatGameViewState> {
     /**
      * Initializes the Boat Game from the given properties
      */
-    constructor(props: {}) {
+    constructor(props: BoatGameProps) {
         super(props);
         const startingProblem = generateWordMatchProblem();
         const problemState = new ProblemState(startingProblem);
 
         this.state = {
+            remainingProblems: 10,
             problemState,
             rightAnswers: 0,
             wrongAnswers: 0,
@@ -74,6 +80,11 @@ export class BoatGameView extends React.Component<{}, BoatGameViewState> {
             this.adjustScore(-1);
         }
 
+        // Check for game over condition
+        if (this.state.remainingProblems == 1) {
+            return this.props.gameOver();
+        }
+
         // TODO adjust the countdown timer
 
         // Create a new problem
@@ -83,6 +94,7 @@ export class BoatGameView extends React.Component<{}, BoatGameViewState> {
         // Update state with new problem
         this.setState((state, props) => {
             return {
+                remainingProblems: state.remainingProblems - 1,
                 problemState: problemState,
             };
         });
