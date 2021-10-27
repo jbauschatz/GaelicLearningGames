@@ -1,6 +1,7 @@
 import {ProblemState} from '../model/models';
 import React from 'react';
 import boatImage from '../asset/boat2.jpg';
+import herringImage from '../asset/Herring.svg';
 import {ProblemView} from './problem-view';
 import {generateWordMatchProblem} from '../model/problem-service';
 import {Countdown} from './countdown';
@@ -126,9 +127,9 @@ export class BoatGameView extends React.Component<BoatGameProps, BoatGameViewSta
      */
     render() {
         return <div>
-            <div>
-                <span>Right: {this.state.rightAnswers}</span>
-                <span>Wrong: {this.state.wrongAnswers}</span>
+            <div className="gameScoreBar">
+                <img src={herringImage}></img>
+                <span className="score">{this.state.rightAnswers}</span>
             </div>
             <img src={boatImage} height="450px"></img>
             <br/>

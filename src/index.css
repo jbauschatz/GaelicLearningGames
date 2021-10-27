@@ -2,6 +2,10 @@
   display: inline-block;
 }
 
+.gameScoreBar>.score {
+  font-size: 24px;
+}
+
 .problemArea {
   display: inline-block;
   margin-left:  50px;
